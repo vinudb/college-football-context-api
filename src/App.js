@@ -6,7 +6,7 @@ import CollegeFootballApp from './components/CollegeFootballApp';
 function App() {
   return (
     <div className="App">
-      <div className="App-header">
+      <div className="appContainer">
         <div className="title">COLLEGE FOOTBALL</div>
         <CollegeFootballApp />
       </div>

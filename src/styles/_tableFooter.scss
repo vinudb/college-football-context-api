@@ -1,0 +1,42 @@
+.tableFooterContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    //position: absolute;
+    //bottom: 0px;
+    //width: 95%;
+    align-items: baseline;
+}
+
+.footerButtons{
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0 10px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+  }
+
+  .footerButtons:disabled:hover{
+    cursor: default;
+    background: none;
+  }
+
+  .footerButtons:hover{
+      background:$roundButton-hover-backgound;
+  }
+
+  .footerText{
+    font-size: 16px;
+    color: $gray;
+  }
+
+  .selectFooter{
+      @extend .select;
+      width: 50px;
+      height: 2.2rem;
+      flex: unset;
+  }

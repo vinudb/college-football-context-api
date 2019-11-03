@@ -1,0 +1,38 @@
+th {
+    font-weight: bold;
+    font-size: 20px;
+    white-space: nowrap;
+    background: white;
+    color: gray;
+    text-align: left;
+  }
+  
+  th, td {
+    border-bottom: 1px solid $gray;
+    padding: 0.75rem;
+  }
+
+  td{
+      color: $themeContrast;
+      font-size: 20px;
+      text-align: left;
+      width: 20%;
+  }
+
+.table{
+    width: 100%;
+    @media (max-width: $mobileBreakpoint)  {
+        overflow-x: auto;
+        display: block;
+    }
+}
+
+.tableTitle{
+    padding: 15px 10px;
+    text-align: left;
+    margin-bottom: 10px;
+    color: $themeContrast;
+    font-weight: bold;
+    background: $themeBackground;
+    border-radius: 5px;
+}

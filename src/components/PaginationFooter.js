@@ -2,18 +2,29 @@ import React from 'react';
 import FootballContext , { useFootballContext } from '../context/footballContext';
 
 const PaginationFooter = ()=> {
-    const {onNextPreviousClick, onPageSizeClick, currentViewTotalPages, page} = useFootballContext(FootballContext);
+    const {onPageSizeChange, onNextPrevChange, display} = useFootballContext(FootballContext);
+    const {pageNumber, totalPages, startCount, endCount, totalCount} = display.page;
 
     return(
-        <div>
-            <div>{`${page} of ${currentViewTotalPages}`}</div>
-            <button onClick={()=>onNextPreviousClick(-1)} disabled={page===1}>Previous</button>
-            <button onClick={()=>onNextPreviousClick(1)} disabled={page===currentViewTotalPages}>Next</button>
-            <select onChange={(e)=>onPageSizeClick(e.target.value)}>
+        <div className="tableFooterContainer">
+            <select className="select selectFooter" onChange={(e)=>onPageSizeChange(e.target.value)}>
                 <option value={3}>3</option>
                 <option value={5}>5</option>
                 <option value={10}>10</option>
             </select>
+            <div className="footerText">{`${startCount} - ${endCount} of ${totalCount}`}</div>
+            <div>
+                <button 
+                    className="footerButtons" 
+                    onClick={()=>onNextPrevChange(-1)} 
+                    disabled={pageNumber===1}>{`<`}
+                </button>
+                <button 
+                    className="footerButtons" 
+                    onClick={()=>{onNextPrevChange(1)}} 
+                    disabled={pageNumber===totalPages}>{`>`}
+                </button>
+            </div>
         </div>
     );
 }

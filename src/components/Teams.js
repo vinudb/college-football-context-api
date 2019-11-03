@@ -1,20 +1,42 @@
 import React from 'react';
-import FootballContext , { useFootballContext } from '../context/footballContext';
+import FootballContext, { useFootballContext } from '../context/footballContext';
+import Loading from './Loading';
 
-const Teams = ()=> {
-    const {teamsDisplay, conferenceMasterList, onConferenceFilterClick} = useFootballContext(FootballContext);
-
-    return(
+const Teams = () => {
+    const { display, conferences, onConferenceSelect } = useFootballContext(FootballContext);
+    return (
         <div>
-            <select onChange={(e)=>onConferenceFilterClick(e.target.value)}>
-                <option value="">By Conference</option>
+            <div className="tableTitle">Teams</div>
+            <select className="select" onChange={(e) => onConferenceSelect(e.target.value)}>
+                <option value="">Filter By Conference</option>
                 {
-                    conferenceMasterList.map((item, index) =><option value={item.abbreviation} key={index}>{item.name}</option>)
+                    conferences.map((conference, index) =>
+                        <option key={index} value={conference.abbreviation}>{conference.name}</option>)
                 }
             </select>
-            {
-                teamsDisplay.map((item, index)=><div key={index}>{item.school}</div>)
-            }
+
+            <table className="table">
+                <tbody>
+                    <tr>
+                        <th>Abbr</th>
+                        <th>School</th>
+                        <th>Mascot</th>
+                        <th>Division</th>
+                        <th>Conference</th>
+                    </tr>
+                    {
+                        display.displayList.map((team, index) =>
+                            <tr key={index}>
+                                <td>{team.abbreviation}</td>
+                                <td>{team.school}</td>
+                                <td>{team.mascot || `-`}</td>
+                                <td>{team.division || `-`}</td>
+                                <td>{team.conference || `-`}</td>
+                            </tr>)
+                    }
+                </tbody>
+            </table>
+            <Loading />
         </div>
     );
 }
