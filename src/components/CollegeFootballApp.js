@@ -60,16 +60,16 @@ class CollegeFootballApp extends React.Component {
 
 
     onPageSizeChange = (pageSize) => {
-        const displayObj = { ...this.state.display }
+        const displayObj = { ...this.state.display };
         displayObj.page.pageSize = pageSize;
         displayObj.page.pageNumber = 1; //reset to first page
-        this.setState({ display: selector({ ...this.state, display: { ...displayObj } }) })
+        this.setState({ display: selector({ ...this.state, display: { ...displayObj } }) });
     }
 
     onNextPrevChange = (pageToBe) => {
-        const displayObj = { ...this.state.display }
+        const displayObj = { ...this.state.display };
         displayObj.page.pageNumber += pageToBe;
-        this.setState({ display: selector({ ...this.state, display: { ...displayObj } }) })
+        this.setState({ display: selector({ ...this.state, display: { ...displayObj } }) });
     }
 
     handleClick = () => this.setState({ open: !this.state.open });

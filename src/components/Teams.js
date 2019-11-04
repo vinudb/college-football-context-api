@@ -5,9 +5,9 @@ import Loading from './Loading';
 const Teams = () => {
     const { display, conferences, onConferenceSelect } = useFootballContext(FootballContext);
     return (
-        <div>
+        <div data-test="teamsComponent">
             <div className="tableTitle">Teams</div>
-            <select className="select" onChange={(e) => onConferenceSelect(e.target.value)}>
+            <select data-test="conferenceSelect" className="select" onChange={(e) => onConferenceSelect(e.target.value)}>
                 <option value="">Filter By Conference</option>
                 {
                     conferences.map((conference, index) =>
